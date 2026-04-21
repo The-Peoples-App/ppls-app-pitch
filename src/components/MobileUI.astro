@@ -1,0 +1,24 @@
+---
+---
+<div class="beer mobile-mockup">
+  <!-- All Beer CSS logic is now active only inside this div -->
+  <slot />
+</div>
+
+<style>
+  .mobile-mockup {
+    /* Manual layout resets so it looks like a phone */
+    display: block;
+    width: 360px;
+    height: 640px;
+    margin: 0 auto;
+    background: #fff; /* Material surface color */
+    border: 10px solid #222;
+    border-radius: 40px;
+    overflow-y: auto;
+    position: relative;
+    text-align: left; /* Counter-act Reveal.js centering */
+    color: #000; /* Ensure text isn't white from Reveal theme */
+  }
+</style>
+

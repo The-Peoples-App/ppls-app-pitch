@@ -1,0 +1,69 @@
+---
+// src/pages/index.astro
+import SlideLayout from '../layouts/SlideLayout.astro';
+import MobileUI from '../components/MobileUI.astro';
+---
+
+<SlideLayout title="Material 3 Presentation">
+<!-- Slide 1: Material 3 Heading -->
+<section>
+  <h2 class="extra">Beer CSS + Reveal.js</h2>
+  <p class="secondary-text">Material 3 layout in an Astro presentation</p>
+</section>
+
+<!-- Slide 2: Material 3 Component Example -->
+<section>
+  <h3>Mobile App Preview</h3>
+  
+  <!-- This container activates the Beer CSS styles -->
+  <MobileUI>
+    <header class="primary">
+      <nav>
+        <button class="circle transparent">
+          <i>menu</i>
+        </button>
+        <h5 class="max">My App</h5>
+      </nav>
+    </header>
+
+    <main class="responsive">
+      <div class="space"></div>
+      <article class="medium-elevate">
+        <div>
+          <p>Material 3 Card inside the slide.</p>
+        </div>
+      </article>
+      <div class="space"></div>
+    </main>
+    
+    <nav class="bottom">
+      <button><i>home</i><span>Home</span></button>
+      <button><i>search</i><span>Search</span></button>
+    </nav>
+  </MobileUI>
+</section>
+
+
+<!-- Slide 3: Code Highlight Example -->
+<section>
+<pre><code data-trim class="language-markdown" data-line-numbers="1-2|3-5|8-10|12-14|16">
+---
+id: "calfresh-how-to"
+title: "How Do I Get CalFresh?"
+page: 37
+section: "CalFresh"
+---
+
+# How Do I Get CalFresh?
+
+You can apply for CalFresh in person, by phone, or online. 
+
+### Quick Steps:
+1. **Call DPSS:** (866) 613-3777
+2. **Apply Online:** [BenefitsCal.com](https://benefitscal.com)
+
+> **Pro-Tip:** State workers suggest having your ID and Rent Receipt ready before you call to cut through the red tape.
+</code></pre>
+</section>
+</SlideLayout>
+

@@ -1,0 +1,26 @@
+{
+  "name": "ppls-app-pitch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "astro": "^6.1.4",
+    "beercss": "^4.0.20",
+    "highlight.js": "^11.11.1",
+    "material-dynamic-colors": "^1.1.4",
+    "netlify-cli": "^25.1.1",
+    "reveal.js": "^6.0.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1"
+  }
+}

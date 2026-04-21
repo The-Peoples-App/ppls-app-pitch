@@ -1,0 +1,51 @@
+---
+const { title = "The Peoples App - Digital Pitch" } = Astro.props;
+import "reveal.js/reveal.css";
+import "reveal.js/theme/black.css";
+import "beercss/dist/cdn/beer.scoped.min.css"; 
+import "material-dynamic-colors";
+import "highlight.js/styles/arta.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap">
+  </head>
+
+  <body>
+       <!-- Reveal.js -->
+    <div class="reveal">
+      <div class="slides">
+        <slot /> <!-- Slides -->
+      </div>
+    </div>
+    
+    <script>
+    import Reveal from "reveal.js";
+    import RevealNotes from 'reveal.js/plugin/notes';
+
+    import RevealHighlight from 'reveal.js/plugin/highlight';
+    // Init reveal.js
+    const deck = new Reveal();
+    deck.initialize({
+      plugins: [RevealNotes, RevealHighlight],
+      // Config
+      showNotes: false,
+      hash: true, // Allows URL deep linking to slides
+      // view: 'scroll',
+
+      // - auto:     Show the scrollbar while scrolling, hide while idle
+      // - true:     Always show the scrollbar
+      // - false:    Never show the scrollbar
+      scrollProgress: 'auto',
+    });
+    // Toggle the Architect View sidebar
+    // document.getElementById('architect-toggle').addEventListener('click', () => {
+      // document.getElementById('architect-view').classList.toggle('open');
+    // });
+    </script>
+  </body>
+</html>
