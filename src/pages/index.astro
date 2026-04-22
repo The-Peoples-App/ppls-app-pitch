@@ -2,7 +2,12 @@
 // src/pages/index.astro
 import SlideLayout from '../layouts/SlideLayout.astro';
 import MobileUI from '../components/MobileUI.astro';
-import pplsGuideImg from '../assets/images/ppls-guide.png';
+
+import { getImage } from "astro:assets";
+import pplsGuideImg from "../assets/images/ppls-guide.png";
+
+// This generates a guaranteed URL that works on remote servers
+const optimizedBackground = await getImage({ src: pplsGuideImg });
 ---
 
 <SlideLayout title="Material 3 Presentation">
@@ -16,12 +21,6 @@ import pplsGuideImg from '../assets/images/ppls-guide.png';
 <!-- <section data-background-iframe="https://dochub.com/snuggscatherine/Noek8bMwxDEx9xvwl7d2qm/laco-english-2020-peoples-guide-final-pdf" -->
 <!--   <h2>Iframe</h2> -->
 <!-- </section> -->
-
-<!-- BG Image Example -->
-<section data-background-image={pplsGuideImg.src}>
-
-</section>
-
 
 <!-- Auto-animate Example -->
 <section data-auto-animate>
@@ -52,7 +51,7 @@ import pplsGuideImg from '../assets/images/ppls-guide.png';
 </section>
 
 <!-- Slide 2: Material 3 Component Example -->
-<section data-background-image={pplsGuideImg.src}>
+<section data-background-image={optimizedBackground.src}>
   <h3>Mobile App Preview</h3>
 
   <!-- This container activates the Beer CSS styles -->
