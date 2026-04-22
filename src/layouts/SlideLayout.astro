@@ -2,9 +2,8 @@
 const { title = "The Peoples App - Digital Pitch" } = Astro.props;
 import "reveal.js/reveal.css";
 import "reveal.js/theme/black.css";
-import "beercss/dist/cdn/beer.scoped.min.css"; 
-import "material-dynamic-colors";
 import "highlight.js/styles/arta.css";
+import "beercss/dist/cdn/beer.scoped.min.css"; 
 ---
 
 <html lang="en">
@@ -13,6 +12,12 @@ import "highlight.js/styles/arta.css";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap">
+    <style>
+    @layer revealTheme, reveal, beer;
+    @import url("reveal.js/theme/black.css") layer(revealTheme);
+    @import url("beercss/dist/cdn/beer.scoped.min.css") layer(beer);
+    @import url("reveal.js/reveal.css") layer(reveal);
+    </style>
   </head>
 
   <body>
@@ -44,8 +49,15 @@ import "highlight.js/styles/arta.css";
     });
     // Toggle the Architect View sidebar
     // document.getElementById('architect-toggle').addEventListener('click', () => {
-      // document.getElementById('architect-view').classList.toggle('open');
+    // document.getElementById('architect-view').classList.toggle('open');
     // });
+    // import "beercss/scoped"; 
+    import "material-dynamic-colors";
+    import { ui } from "beercss/dist/cdn/beer.min.js";
+    let mode = ui("mode", "light");
+    let theme = await ui("theme", "#00ff00");
+    console.log('theme: ', theme, 'mode: ', mode);
+
     </script>
   </body>
 </html>
