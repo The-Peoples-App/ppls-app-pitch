@@ -2,6 +2,7 @@
 // src/pages/index.astro
 import SlideLayout from '../layouts/SlideLayout.astro';
 import MobileUI from '../components/MobileUI.astro';
+import pplsGuideImg from '../assets/images/ppls-guide.png';
 ---
 
 <SlideLayout title="Material 3 Presentation">
@@ -17,7 +18,7 @@ import MobileUI from '../components/MobileUI.astro';
 <!-- </section> -->
 
 <!-- BG Image Example -->
-<section data-background-image="http://example.com/image.png">
+<section data-background-image={pplsGuideImg.src}>
 
 </section>
 
@@ -51,7 +52,7 @@ import MobileUI from '../components/MobileUI.astro';
 </section>
 
 <!-- Slide 2: Material 3 Component Example -->
-<section data-background-image="../images/ppls-guide.png">
+<section data-background-image={pplsGuideImg.src}>
   <h3>Mobile App Preview</h3>
 
   <!-- This container activates the Beer CSS styles -->
