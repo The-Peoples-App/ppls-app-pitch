@@ -51,7 +51,7 @@ const optimizedBackground = await getImage({ src: pplsGuideImg });
 </section>
 
 <!-- Slide 2: Material 3 Component Example -->
-<section data-background-image={optimizedBackground.src}>
+<section data-background-image={pplsGuideImg.src /* <- use optimizedBackground.src on server, to display locally use pplsGuideImg.src */}>
   <h3>Mobile App Preview</h3>
 
   <!-- This container activates the Beer CSS styles -->
