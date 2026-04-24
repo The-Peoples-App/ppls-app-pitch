@@ -1,24 +1,36 @@
 ---
 ---
-<div class="beer mobile-mockup">
+<div class="beer mobile-mockup hide-scrollbar">
   <!-- All Beer CSS logic is now active only inside this div -->
   <slot />
 </div>
 
 <style>
-  .mobile-mockup {
-    /* Manual layout resets so it looks like a phone */
-    display: block;
-    width: 360px;
-    height: 640px;
-    margin: 0 auto;
-    background-color: var(--surface); /* Material surface color */
-    border: 10px solid #222;
-    border-radius: 40px;
-    overflow-y: auto;
-    position: relative;
-    text-align: left; /* Counter-act Reveal.js centering */
-    color: var(--primary); /* Ensure text isn't white from Reveal theme */
-  }
+.mobile-mockup {
+  /* Manual layout resets so it looks like a phone */
+  display: block;
+  width: 360px;
+  height: 640px;
+  margin: 0 auto;
+  background-color: var(--surface); /* Material surface color */
+  border: 10px solid #222;
+  border-radius: 40px;
+  overflow-y: auto;
+  position: relative;
+  text-align: left; /* Counter-act Reveal.js centering */
+  color: var(--primary); /* Ensure text isn't white from Reveal theme */
+}
+.hide-scrollbar {
+  /* IE and Edge */
+  -ms-overflow-style: none;
+  /* Firefox */
+  scrollbar-width: none;
+}
+
+/* Chrome, Safari, and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 </style>
 

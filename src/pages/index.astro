@@ -5,12 +5,97 @@ import MobileUI from '../components/MobileUI.astro';
 
 import { getImage } from "astro:assets";
 import pplsGuideImg from "../assets/images/peoples_guide_page.webp";
+import slide01Img from "../assets/images/Slide01.png";
+import slide02Img from "../assets/images/Slide02.png";
+import slide03Img from "../assets/images/Slide03.png";
+import slide04Img from "../assets/images/Slide04.png";
+import slide05Img from "../assets/images/Slide05.png";
+import slide06Img from "../assets/images/Slide06.png";
+import slide07Img from "../assets/images/Slide07.png";
+import slide08Img from "../assets/images/Slide08.png";
+import slide09Img from "../assets/images/Slide09.png";
+import slide10Img from "../assets/images/Slide10.png";
+import slide11Img from "../assets/images/Slide11.png";
+import slide12Img from "../assets/images/Slide12.png";
 
 // This generates a guaranteed URL that works on remote servers
 const optimizedBackground = await getImage({ src: pplsGuideImg });
 ---
 
 <SlideLayout title="Material 3 Presentation">
+<!-- Slide Desc -->
+<section 
+  data-background-size="80%"
+  data-background-image={slide01Img.src /* <- use optimizedBackground.src on server, to display locally use slideXXImg.src */}>
+</section>
+
+<!-- Slide Desc -->
+<section 
+  data-background-size="80%"
+  data-background-image={slide02Img.src /* <- use optimizedBackground.src on server, to display locally use slideXXImg.src */}>
+</section>
+
+<!-- Slide Desc -->
+<section 
+  data-background-size="80%"
+  data-background-image={slide03Img.src /* <- use optimizedBackground.src on server, to display locally use slideXXImg.src */}>
+</section>
+
+<!-- Slide Desc -->
+<section 
+  data-background-size="80%"
+  data-background-image={slide04Img.src /* <- use optimizedBackground.src on server, to display locally use slideXXImg.src */}>
+</section>
+
+<!-- Slide Desc -->
+<section 
+  data-background-size="80%"
+  data-background-image={slide05Img.src /* <- use optimizedBackground.src on server, to display locally use slideXXImg.src */}>
+</section>
+
+<!-- Slide Desc -->
+<section 
+  data-background-size="80%"
+  data-background-image={slide06Img.src /* <- use optimizedBackground.src on server, to display locally use slideXXImg.src */}>
+</section>
+
+<!-- Slide Desc -->
+<section 
+  data-background-size="80%"
+  data-background-image={slide07Img.src /* <- use optimizedBackground.src on server, to display locally use slideXXImg.src */}>
+</section>
+
+<!-- Slide Desc -->
+<section 
+  data-background-size="80%"
+  data-background-image={slide08Img.src /* <- use optimizedBackground.src on server, to display locally use slideXXImg.src */}>
+</section>
+
+<!-- Slide Desc -->
+<section 
+  data-background-size="80%"
+  data-background-image={slide09Img.src /* <- use optimizedBackground.src on server, to display locally use slideXXImg.src */}>
+</section>
+
+<!-- Slide Desc -->
+<section 
+  data-background-size="80%"
+  data-background-image={slide10Img.src /* <- use optimizedBackground.src on server, to display locally use slideXXImg.src */}>
+</section>
+
+<!-- Slide Desc -->
+<section 
+  data-background-size="80%"
+  data-background-image={slide11Img.src /* <- use optimizedBackground.src on server, to display locally use slideXXImg.src */}>
+</section>
+
+<!-- Slide Desc -->
+<section 
+  data-background-size="80%"
+  data-background-image={slide12Img.src /* <- use optimizedBackground.src on server, to display locally use slideXXImg.src */}>
+</section>
+
+
 <!-- Make It Pop (convex) Example -->
 <section 
   data-state="make-it-pop"
@@ -39,11 +124,6 @@ const optimizedBackground = await getImage({ src: pplsGuideImg });
   <p class="secondary-text">Make it fade with transition animation "concave"</p>
 </section>
 
-<!-- Slide 1: Material 3 Heading -->
-<section>
-  <h2 class="extra">Beer CSS + Reveal.js</h2>
-  <p class="secondary-text">Material 3 layout in an Astro presentation</p>
-</section>
 
 <!-- iFrame Example -->
 <!-- <section data-background-iframe="https://dochub.com/snuggscatherine/Noek8bMwxDEx9xvwl7d2qm/laco-english-2020-peoples-guide-final-pdf" -->
@@ -132,30 +212,7 @@ const optimizedBackground = await getImage({ src: pplsGuideImg });
           <div class="badge">10</div>
         </a>
         <progress class="circle" value="25" max="100"></progress>
-        <nav>
-          <label class="radio">
-            <input type="radio">
-            <span>Item 1</span>
-          </label>
-          <label class="radio">
-            <input type="radio">
-            <span>Item 2</span>
-          </label>
-          <label class="radio">
-            <input type="radio">
-            <span>Item 3</span>
-          </label>
-        </nav>
 
-        <div class="shape sunny"></div>
-
-        <div class="shape sunny">
-          <img class="responsive" src="/favicon.png">
-        </div>
-
-        <div class="small-width small-height">
-          <div class="shape sunny max"></div>
-        </div>
 
       </article>
 
@@ -176,6 +233,33 @@ const optimizedBackground = await getImage({ src: pplsGuideImg });
           <i>sunny</i>
         </span>
       </div>
+
+      <div class="space"></div>
+      <article>
+        <nav>
+          <label class="radio">
+            <input type="radio">
+            <span>Item 1</span>
+          </label>
+          <label class="radio">
+            <input type="radio">
+            <span>Item 2</span>
+          </label>
+          <label class="radio">
+            <input type="radio">
+            <span>Item 3</span>
+          </label>
+        </nav>
+        <nav>
+  <div class="max">
+    <h6>Title</h6>
+  </div>
+  <label class="switch">
+    <input type="checkbox">
+    <span></span>
+  </label>
+</nav>
+      </article>
 
       <div class="space"></div>
     </main>
