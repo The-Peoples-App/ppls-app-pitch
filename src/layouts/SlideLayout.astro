@@ -3,7 +3,8 @@ const { title = "The Peoples App - Digital Pitch" } = Astro.props;
 import "reveal.js/reveal.css";
 import "reveal.js/theme/black.css";
 import "highlight.js/styles/arta.css";
-import "beercss/dist/cdn/beer.scoped.min.css"; 
+// import "beercss/dist/cdn/beer.scoped.min.css"; 
+import "beercss/dist/cdn/beer.min.css"; 
 ---
 
 <html lang="en">
@@ -15,7 +16,8 @@ import "beercss/dist/cdn/beer.scoped.min.css";
     <style>
     @layer revealTheme, reveal, beer;
     @import url("reveal.js/theme/black.css") layer(revealTheme);
-    @import url("beercss/dist/cdn/beer.scoped.min.css") layer(beer);
+    /* @import url("beercss/dist/cdn/beer.scoped.min.css") layer(beer); */
+    @import url("beercss/dist/cdn/beer.min.css") layer(beer);
     @import url("reveal.js/reveal.css") layer(reveal);
     .make-it-pop {
       filter: drop-shadow(0 0 10px purple);
