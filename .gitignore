@@ -1,6 +1,7 @@
 .DS_Store
 node_modules/
-public/_headers
+.env
+dist/
 
 # Local Netlify folder
-.netlify
+.netlify/
