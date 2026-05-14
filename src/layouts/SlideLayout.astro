@@ -30,13 +30,13 @@ import "beercss/dist/cdn/beer.min.css";
   </head>
 
   <body>
-       <!-- Reveal.js -->
+    <!-- Reveal.js -->
     <div class="reveal">
       <div class="slides">
         <slot /> <!-- Slides -->
       </div>
     </div>
-    
+
     <script>
     import Reveal from "reveal.js";
     import RevealNotes from 'reveal.js/plugin/notes';
@@ -46,20 +46,29 @@ import "beercss/dist/cdn/beer.min.css";
     const deck = new Reveal();
     deck.initialize({
       plugins: [RevealNotes, RevealHighlight],
-      // Config
-      showNotes: false,
-      hash: true, // Allows URL deep linking to slides
-      // view: 'scroll',
 
-      // - auto:     Show the scrollbar while scrolling, hide while idle
-      // - true:     Always show the scrollbar
-      // - false:    Never show the scrollbar
-      scrollProgress: 'auto',
+      // ********* REVEALJS CONFIG *********
+      showNotes: false,
+      hash: true, // Add slide # to URL (default false)
+
+      disableLayout: false, // Roll your own layout (default false)
+
+      // The "normal" size of the presentation, aspect ratio will
+      // be preserved when the presentation is scaled to fit different
+      // resolutions. Can be specified using percentage units.
+      width: 1920, // (default 960)
+      height: 1080, // (default 700)
+
+      // Factor of the display size that should remain empty around
+      // the content
+      margin: 0.04, // (default 0.04)
+
+      // Bounds for smallest/largest possible scale to apply to content
+      minScale: 0.2, // (default 0.2)
+      maxScale: 2.0, // (default 2.0)
+      center: true, // (default true)
     });
-    // Toggle the Architect View sidebar
-    // document.getElementById('architect-toggle').addEventListener('click', () => {
-    // document.getElementById('architect-view').classList.toggle('open');
-    // });
+
     // import "beercss/scoped"; 
     import "material-dynamic-colors";
     import { ui } from "beercss/dist/cdn/beer.min.js";
