@@ -3,7 +3,7 @@ const { title = "The Peoples App - Digital Pitch" } = Astro.props;
 import "reveal.js/reveal.css";
 import "reveal.js/theme/black.css";
 import "highlight.js/styles/arta.css";
-// import "beercss/dist/cdn/beer.scoped.min.css"; 
+// import "beercss/dist/cdn/beer.scoped.min.css"; // Scoped breaks old browsers
 import "beercss/dist/cdn/beer.min.css"; 
 ---
 
@@ -69,7 +69,7 @@ import "beercss/dist/cdn/beer.min.css";
       center: true, // (default true)
     });
 
-    // import "beercss/scoped"; 
+    // import "beercss/scoped"; // Breaks old browser
     import "material-dynamic-colors";
     import { ui } from "beercss/dist/cdn/beer.min.js";
     let mode = ui("mode", "light");
