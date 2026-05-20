@@ -1,0 +1,53 @@
+---
+interface ObjectProps {
+  src: string;
+  x: number;   // Figma X
+  y: number;   // Figma Y
+  width: number;
+  dataId: string; // Required for smooth Auto-Animate
+  animation?: string; 
+}
+
+interface Props {
+  bgSrc: string;
+  objects: ObjectProps[];
+  gridClass?: string;
+}
+
+const { bgSrc, objects, gridClass = "s12 m8" } = Astro.props;
+---
+
+<div class={`${gridClass} stage-cell`} style={`--bg: url(${bgSrc});`}>
+  {objects.map((obj, index) => (
+    <img
+      src={obj.src}
+      data-id={obj.dataId}
+      class={`fragment ${obj.animation || 'fade-up'} floating-object`}
+      style={{
+        left: `${obj.x}px`,
+        top: `${obj.y}px`,
+        width: `${obj.width}px`,
+        "--delay": `${index * 0.15}s` // Staggered entry delay
+      }}
+    />
+  ))}
+</div>
+
+<style>
+  .stage-cell {
+    position: relative;
+    background-image: var(--bg);
+    background-size: cover;
+    background-position: center;
+    height: 1080px; 
+    overflow: hidden;
+    border: 1px solid rgba(255, 165, 0, 0.3); /* Subtle orange guide */
+  }
+
+  .floating-object {
+    position: absolute;
+    /* This allows the stagger to work alongside Reveal's built-in transitions */
+    transition-delay: var(--delay) !important;
+  }
+</style>
+
