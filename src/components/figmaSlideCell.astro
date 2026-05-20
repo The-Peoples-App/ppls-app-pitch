@@ -1,8 +1,8 @@
 ---
 interface ObjectProps {
   src: string;
-  x: number;   // Figma X
-  y: number;   // Figma Y
+  x: number; // Figma X
+  y: number; // Figma Y
   width: number;
   dataId: string; // Required for smooth Auto-Animate
   animation?: string; 
@@ -14,7 +14,7 @@ interface Props {
   gridClass?: string;
 }
 
-const { bgSrc, objects, gridClass = "s12 m8" } = Astro.props;
+const { bgSrc, objects, gridClass = 's12 m12' } = Astro.props;
 ---
 
 <div class={`${gridClass} stage-cell`} style={`--bg: url(${bgSrc});`}>
