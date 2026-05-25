@@ -5,7 +5,9 @@ interface ObjectProps {
   y: number; // Figma Y
   width: number;
   dataId: string; // Required for smooth Auto-Animate
-  animation?: string; 
+  animation?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right'; // Restrict types for predictable CSS
+  autoplay?: boolean;
+  css?: string;
 }
 
 interface Props {
@@ -17,38 +19,89 @@ interface Props {
 const { bgSrc, objects, gridClass = 's12 m12' } = Astro.props;
 ---
 
-<div class={`${gridClass} stage-cell`} style={`--bg: url(${bgSrc});`}>
-  {objects.map((obj, index) => (
-    <img
-      src={obj.src}
-      data-id={obj.dataId}
-      class={`fragment ${obj.animation || 'fade-up'} floating-object`}
-      style={{
-        left: `${obj.x}px`,
-        top: `${obj.y}px`,
-        width: `${obj.width}px`,
-        "--delay": `${index * 0.15}s` // Staggered entry delay
-      }}
-    />
-  ))}
+<div
+  class={`${gridClass} stage-cell`}
+  data-id='stable-figma-stage'
+  style={`background-image: url(${bgSrc});`}
+>
+  {
+    objects.map((obj, index) => {
+      // Determine the animation class based on whether it is autoplaying or manual
+      const animationClass = obj.animation || null;
+      const isAutoplay = obj.autoplay ?? false;
+      const customCSS = obj.css || null;
+
+      return (
+        <img
+          src={obj.src}
+          data-id={obj.dataId}
+          class:list={[
+            'floating-object',
+            animationClass,
+            { 'fragment': !isAutoplay, 'autoplay-animation': isAutoplay },
+          ]}
+          style={`
+      left: ${obj.x}px;
+      top: ${obj.y}px;
+      width: ${obj.width}px;
+      --delay: ${index * 0.15}s;
+      ${customCSS || ''}
+    `}
+        />
+      );
+    })
+  }
 </div>
 
 <style>
   .stage-cell {
     position: relative;
-    background-image: var(--bg);
     background-size: cover;
     background-position: center;
     width: 1920px;
     height: 1080px;
     overflow: hidden;
-    border: 1px solid rgba(255, 165, 0, 0.3); /* Subtle orange guide */
+    contain: layout size style;
+    margin-block-start: 0px !important; /* Overrides aggressive Beer CSS spacing */
   }
 
   .floating-object {
     position: absolute;
-    /* This allows the stagger to work alongside Reveal's built-in transitions */
-    transition-delay: var(--delay) !important;
+    display: block;
+    margin: 0 !important; /* Neutralizes Reveal's theme margins */
+   /* Force GPU layer caching to stop image dropping */
+    transform: translate3d(0,0,0);
+  }
+
+  /* --- Manual Reveal.js Fragments --- */
+  .fragment {
+    transition-delay: var(--delay);
+  }
+
+  /* --- Selectable Autoplay Logic --- */
+  /* 1. Base state for autoplay items (hidden & shifted) */
+  .autoplay-animation {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: var(--delay);
+  }
+
+  .autoplay-animation.fade-up {
+    transform: translateY(40px);
+  }
+  .autoplay-animation.fade-down {
+    transform: translateY(-40px);
+  }
+  .autoplay-animation.fade-left {
+    transform: translateX(40px);
+  }
+  .autoplay-animation.fade-right {
+    transform: translateX(-40px);
+  }
+
+  /* 2. Active state (Triggers immediately when Reveal.js adds .present to the parent slide) */
+  :global(.present) .autoplay-animation {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 </style>
-
