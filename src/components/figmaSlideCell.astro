@@ -11,18 +11,29 @@ interface ObjectProps {
 }
 
 interface Props {
-  bgSrc: string;
+  bgImg: any;
   objects: ObjectProps[];
   gridClass?: string;
 }
 
-const { bgSrc, objects, gridClass = 's12 m12' } = Astro.props;
+const { bgImg, objects, gridClass = 's12 m12' } = Astro.props;
+import { Image, getImage } from 'astro:assets';
+
+// Generate optimized responsive background srcset
+const optimizedBg = await getImage({
+  src: bgImg,
+  width: 1920,
+  widths: [1024, 2048, 4096], // Build 1x, 2x, 4x versions
+});
+console.log('optimizedBg', optimizedBg);
+console.log('optimizedBg.srcSet.values', optimizedBg.srcSet.values);
+console.log('bgImg', bgImg);
 ---
 
 <div
   class={`${gridClass} stage-cell`}
   data-id='stable-figma-stage'
-  style={`background-image: url(${bgSrc});`}
+  style={`background-image: url(${import.meta.env.DEV ? bgImg.src : optimizedBg.src});`}
 >
   {
     objects.map((obj, index) => {
@@ -69,8 +80,8 @@ const { bgSrc, objects, gridClass = 's12 m12' } = Astro.props;
     position: absolute;
     display: block;
     margin: 0 !important; /* Neutralizes Reveal's theme margins */
-   /* Force GPU layer caching to stop image dropping */
-    transform: translate3d(0,0,0);
+    /* Force GPU layer caching to stop image dropping */
+    transform: translate3d(0, 0, 0);
   }
 
   /* --- Manual Reveal.js Fragments --- */
