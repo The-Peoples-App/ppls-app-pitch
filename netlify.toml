@@ -2,4 +2,5 @@
   command = "npm run dev -- --host"
   targetPort = 4321
   port = 8888
+  framework = "#custom"
 
