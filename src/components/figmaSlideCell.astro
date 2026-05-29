@@ -1,12 +1,13 @@
 ---
 interface ObjectProps {
-  src: string;
+  img: any;
   x: number; // Figma X
   y: number; // Figma Y
   width: number;
   dataId: string; // Required for smooth Auto-Animate
   animation?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right'; // Restrict types for predictable CSS
   autoplay?: boolean;
+  fetchPriority?: boolean;
   css?: string;
 }
 
@@ -14,9 +15,16 @@ interface Props {
   bgImg: any;
   objects: ObjectProps[];
   gridClass?: string;
+  preloadBackground?: boolean;
 }
 
-const { bgImg, objects, gridClass = 's12 m12' } = Astro.props;
+const {
+  bgImg,
+  objects,
+  gridClass = 's12 m12',
+  preloadBackground = false,
+} = Astro.props;
+
 import { Image, getImage } from 'astro:assets';
 
 // Generate optimized responsive background srcset
@@ -25,15 +33,38 @@ const optimizedBg = await getImage({
   width: 1920,
   widths: [1024, 2048, 4096], // Build 1x, 2x, 4x versions
 });
-console.log('optimizedBg', optimizedBg);
-console.log('optimizedBg.srcSet.values', optimizedBg.srcSet.values);
-console.log('bgImg', bgImg);
+
+const bgImageSrc = optimizedBg.src;
+const bgImageSrcset = optimizedBg.srcSet.attribute;
+const bgImageSizes = '100vw';
+
+// Build <link rel="preload" ...> (preload 1st slide bg image)
+let preloadScript = '';
+if (preloadBackground) {
+  preloadScript = `
+    <script>
+      (function() {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = '${bgImageSrc}';
+        link.setAttribute('imagesrcset', '${bgImageSrcset}');
+        link.setAttribute('imagesizes', '${bgImageSizes}');
+        link.setAttribute('fetchpriority', 'high');
+        document.head.appendChild(link);
+      })();
+    </script>
+  `;
+}
 ---
+
+<!-- Add <link rel="preload"...> to <head> -->
+<Fragment set:html={preloadScript} />
 
 <div
   class={`${gridClass} stage-cell`}
   data-id='stable-figma-stage'
-  style={`background-image: url(${import.meta.env.DEV ? bgImg.src : optimizedBg.src});`}
+  style={`background-image: url(${bgImageSrc});`}
 >
   {
     objects.map((obj, index) => {
@@ -41,11 +72,17 @@ console.log('bgImg', bgImg);
       const animationClass = obj.animation || null;
       const isAutoplay = obj.autoplay ?? false;
       const customCSS = obj.css || null;
+      const fetchPriority = obj.fetchPriority || null;
 
       return (
-        <img
-          src={obj.src}
+        <Image
+          src={obj.img}
+          width={obj.width}
+          widths={[obj.width, obj.width * 2]}
+          alt='Slide Object'
           data-id={obj.dataId}
+          loading={preloadBackground ? 'eager' : 'lazy'}
+          priority={fetchPriority}
           class:list={[
             'floating-object',
             animationClass,
@@ -55,6 +92,7 @@ console.log('bgImg', bgImg);
       left: ${obj.x}px;
       top: ${obj.y}px;
       width: ${obj.width}px;
+      height: auto;
       --delay: ${index * 0.15}s;
       ${customCSS || ''}
     `}

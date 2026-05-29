@@ -1,305 +1,296 @@
 ---
-// src/pages/index.astro
 import SlideLayout from '../layouts/SlideLayout.astro';
 import MobileUI from '../components/MobileUI.astro';
+import FigmaSlideCell from '../components/figmaSlideCell.astro';
+import { Image, getImage } from 'astro:assets';
 
-import { getImage } from "astro:assets";
-import pplsGuideImg from "../assets/images/peoples_guide_page.webp";
-import slide01Img from "../assets/images/Slide01.png";
-import slide02Img from "../assets/images/Slide02.png";
-import slide03Img from "../assets/images/Slide03.png";
-import slide04Img from "../assets/images/Slide04.png";
-import slide05Img from "../assets/images/Slide05.png";
-import slide06Img from "../assets/images/Slide06.png";
-import slide07Img from "../assets/images/Slide07.png";
-import slide08Img from "../assets/images/Slide08.png";
-import slide09Img from "../assets/images/Slide09.png";
-import slide10Img from "../assets/images/Slide10.png";
-import slide11Img from "../assets/images/Slide11.png";
-import slide12Img from "../assets/images/Slide12.png";
+import pplsGuideImg from '../assets/images/peoples_guide_page.webp';
 
 // This generates a guaranteed URL that works on remote servers
-// const optimizedBackground = await getImage({ src: pplsGuideImg });
+const optimizedBackground = await getImage({ src: pplsGuideImg });
+
+// Grab every image inside the slides folder eagerly
+const allImages = import.meta.glob(
+  '/src/assets/slides/**/*.{png,webp,jpg,jpeg}',
+  { eager: true },
+);
+
+// Helper function to find a specific asset by slide folder and filename
+/**
+ * Import Slide Assets from folder using Slide Directory & Filename.ext
+ */
+const getAsset = (slideDir: string, fileName: string) => {
+  const path = `/src/assets/slides/${slideDir}/${fileName}`;
+  const module: any = allImages[path];
+  if (!module) throw new Error(`Asset not found: ${path}`);
+  return module.default; // This returns the full Astro Image Metadata object
+};
 ---
 
-<SlideLayout title="Material 3 Presentation">
-<!-- Slide Desc -->
-<section 
-  data-background-size="cover"
-  data-background-opacity=".1"
-  data-background-image={pplsGuideImg.src /* <- use optimizedBackground.src on server, to display locally use pplsGuideImg.src */}>
-  <img src={slide01Img.src} />
-</section>
+<SlideLayout>
+  <!-- Title Slide -->
+  <section>
+    <div class='grid no-space'>
+      <FigmaSlideCell
+        preloadBackground={true}
+        gridClass='s12 m12'
+        bgImg={getAsset('slide-01', 'bg.webp')}
+        objects={[
+          {
+            img: getAsset('slide-01', 'caption.webp'),
+            x: 75,
+            y: 477,
+            width: 308,
+            dataId: 'caption',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-01', 'subhead.webp'),
+            x: 75,
+            y: 563,
+            width: 384,
+            dataId: 'subhead',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-01', 'hero-obj-01.webp'),
+            x: 567,
+            y: 156,
+            width: 630,
+            dataId: 'hero',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+        ]}
+      />
+    </div>
+  </section>
 
-<!-- Slide Desc -->
-<section 
-  data-background-size="cover"
-  data-background-opacity=".1"
-  data-background-image={pplsGuideImg.src /* <- use optimizedBackground.src on server, to display locally use pplsGuideImg.src */}>
-  <img src={slide02Img.src} />
-</section>
+  <!-- Slide Desc -->
+  <section
+    data-background-size='cover'
+    data-background-opacity='.1'
+    data-background-image={optimizedBackground.src}
+  >
+    <Image src={getAsset('slide-01', 'datatable.png')} alt='Data Table' />
+  </section>
 
-<!-- Slide Desc -->
-<section 
-  data-background-size="cover"
-  data-background-opacity=".1"
-  data-background-image={pplsGuideImg.src /* <- use optimizedBackground.src on server, to display locally use pplsGuideImg.src */}>
-  <img src={slide03Img.src} />
-</section>
+  <!-- Slide Desc -->
+  <section
+    data-background-size='cover'
+    data-background-opacity='.1'
+    data-background-image={optimizedBackground.src}
+  >
+    <Image src={getAsset('slide-02', 'datatable.png')} alt='Data Table' />
+  </section>
 
-<!-- Slide Desc -->
-<section 
-  data-background-size="cover"
-  data-background-opacity=".1"
-  data-background-image={pplsGuideImg.src /* <- use optimizedBackground.src on server, to display locally use pplsGuideImg.src */}>
-  <img src={slide04Img.src} />
-</section>
+  <!-- Slide Desc -->
+  <section
+    data-background-size='cover'
+    data-background-opacity='.1'
+    data-background-image={optimizedBackground.src}
+  >
+    <Image src={getAsset('slide-03', 'datatable.png')} alt='Data Table' />
+  </section>
 
-<!-- Slide Desc -->
-<section 
-  data-background-size="cover"
-  data-background-opacity=".1"
-  data-background-image={pplsGuideImg.src /* <- use optimizedBackground.src on server, to display locally use pplsGuideImg.src */}>
-  <img src={slide05Img.src} />
-</section>
+  <!-- Slide Desc -->
+  <section
+    data-background-size='cover'
+    data-background-opacity='.1'
+    data-background-image={optimizedBackground.src}
+  >
+    <Image src={getAsset('slide-04', 'datatable.png')} alt='Data Table' />
+  </section>
 
-<!-- Slide Desc -->
-<section 
-  data-background-size="cover"
-  data-background-opacity=".1"
-  data-background-image={pplsGuideImg.src /* <- use optimizedBackground.src on server, to display locally use pplsGuideImg.src */}>
-  <img src={slide06Img.src} />
-</section>
+  <!-- Slide Desc -->
+  <section
+    data-background-size='cover'
+    data-background-opacity='.1'
+    data-background-image={optimizedBackground.src}
+  >
+    <Image src={getAsset('slide-05', 'datatable.png')} alt='Data Table' />
+  </section>
 
-<!-- Slide Desc -->
-<section 
-  data-background-size="cover"
-  data-background-opacity=".1"
-  data-background-image={pplsGuideImg.src /* <- use optimizedBackground.src on server, to display locally use pplsGuideImg.src */}>
-  <img src={slide07Img.src} />
-</section>
+  <!-- Slide Desc -->
+  <section
+    data-background-size='cover'
+    data-background-opacity='.1'
+    data-background-image={optimizedBackground.src}
+  >
+    <Image src={getAsset('slide-06', 'datatable.png')} alt='Data Table' />
+  </section>
 
-<!-- Slide Desc -->
-<section 
-  data-background-size="cover"
-  data-background-opacity=".1"
-  data-background-image={pplsGuideImg.src /* <- use optimizedBackground.src on server, to display locally use pplsGuideImg.src */}>
-  <img src={slide08Img.src} />
-</section>
+  <!-- Slide Desc -->
+  <section
+    data-background-size='cover'
+    data-background-opacity='.1'
+    data-background-image={optimizedBackground.src}
+  >
+    <Image src={getAsset('slide-07', 'datatable.png')} alt='Data Table' />
+  </section>
 
-<!-- Slide Desc -->
-<section 
-  data-background-size="cover"
-  data-background-opacity=".1"
-  data-background-image={pplsGuideImg.src /* <- use optimizedBackground.src on server, to display locally use pplsGuideImg.src */}>
-  <img src={slide09Img.src} />
-</section>
+  <!-- Slide Desc -->
+  <section
+    data-background-size='cover'
+    data-background-opacity='.1'
+    data-background-image={optimizedBackground.src}
+  >
+    <Image src={getAsset('slide-08', 'datatable.png')} alt='Data Table' />
+  </section>
 
-<!-- Slide Desc -->
-<section 
-  data-background-size="cover"
-  data-background-opacity=".1"
-  data-background-image={pplsGuideImg.src /* <- use optimizedBackground.src on server, to display locally use pplsGuideImg.src */}>
-  <img src={slide10Img.src} />
-</section>
+  <!-- Slide Desc -->
+  <section
+    data-background-size='cover'
+    data-background-opacity='.1'
+    data-background-image={optimizedBackground.src}
+  >
+    <Image src={getAsset('slide-09', 'datatable.png')} alt='Data Table' />
+  </section>
 
-<!-- Slide Desc -->
-<section 
-  data-background-size="cover"
-  data-background-opacity=".1"
-  data-background-image={pplsGuideImg.src /* <- use optimizedBackground.src on server, to display locally use pplsGuideImg.src */}>
-  <img src={slide11Img.src} />
-</section>
+  <!-- Slide Desc -->
+  <section
+    data-background-size='cover'
+    data-background-opacity='.1'
+    data-background-image={optimizedBackground.src}
+  >
+    <Image src={getAsset('slide-10', 'datatable.png')} alt='Data Table' />
+  </section>
 
-<!-- Slide Desc -->
-<section 
-  data-background-size="cover"
-  data-background-opacity=".1"
-  data-background-image={pplsGuideImg.src /* <- use optimizedBackground.src on server, to display locally use pplsGuideImg.src */}>
-  <img src={slide12Img.src} />
-</section>
+  <!-- Slide Desc -->
+  <section
+    data-background-size='cover'
+    data-background-opacity='.1'
+    data-background-image={optimizedBackground.src}
+  >
+    <Image src={getAsset('slide-11', 'datatable.png')} alt='Data Table' />
+  </section>
 
+  <!-- Slide Desc -->
+  <section
+    data-background-size='cover'
+    data-background-opacity='.1'
+    data-background-image={optimizedBackground.src}
+  >
+    <Image src={getAsset('slide-12', 'datatable.png')} alt='Data Table' />
+  </section>
 
-<!-- Make It Pop (convex) Example -->
-<section 
-  data-state="make-it-pop"
-  data-transition="convex"
-  data-background-transition="zoom"
-  data-background-image={pplsGuideImg.src /* <- use optimizedBackground.src on server, to display locally use pplsGuideImg.src */}>
+  <!-- Slide 2: Material 3 Component Example -->
+  <section
+    data-transition='zoom'
+    data-background-opacity='.8'
+    data-background-image={optimizedBackground.src}
+  >
+    <h3>Mobile UI with Background Img</h3>
 
-  <h2 class="extra" style="color: black;">Background Transition: Zoom</h2>
-  <p class="secondary-text" style="color: black;">The background image uses a Zoom Transition; Text uses Convex Transition</p>
-</section>
+    <!-- This container activates the Beer CSS styles -->
+    <MobileUI>
+      <header class='primary'>
+        <nav>
+          <button class='circle transparent'>
+            <i>menu</i>
+          </button>
+          <h5 class='max'>My App</h5>
+        </nav>
+      </header>
 
-<!-- Fade-in Zoom Out Transitiion-->
-<section 
-  data-transition="fade-in zoom-out"
->
-  <h2 class="extra">Separate In-Out Transitions</h2>
-  <p class="secondary-text">This slide has separate In-Out Transitions. It Fades-In, then Zooms-Out</p>
-</section>
-
-<!-- Make It Fade (concave) Example -->
-<section 
-  data-state="make-it-fade"
-  data-transition="concave"
->
-  <h2 class="extra">Make It Fade Slide State</h2>
-  <p class="secondary-text">Make it fade with transition animation "concave"</p>
-</section>
-
-
-<!-- iFrame Example -->
-<!-- <section data-background-iframe="https://dochub.com/snuggscatherine/Noek8bMwxDEx9xvwl7d2qm/laco-english-2020-peoples-guide-final-pdf" -->
-<!--   <h2>Iframe</h2> -->
-<!-- </section> -->
-
-<!-- Auto-animate Example -->
-<section data-auto-animate>
-  <h2 class="extra">List Item (fragments)</h2>
-  <p class="secondary-text">"Fragments" are how we load sections of a slide. Here we use fragments to load list items.</p>
-  <ul data-id="list">
-    <li class="fragment fade-up">Item one</li>
-    <li class="fragment fade-up">Item two</li>
-    <li class="fragment fade-up">Another</li>
-  </ul>
-</section>
-<section data-auto-animate>
-  <p>We can also animate the styles</p>
-  <ul data-id="list" style="float:left; border: solid 1px red; height: 400px; width: 85%;">
-    <li>Item one</li>
-    <li>Item two</li>
-    <li>Another</li>
-  </ul>
-</section>
-
-
-<!-- Auto-animate Example -->
-<section data-auto-animate>
-  <div data-id="box" style="height: 150px; width: 150px; border-radius: 100px; background: blue; float:right;"></div>
-</section>
-<section data-auto-animate>
-  <div data-id="box" style="height: 50px; background: salmon;"></div>
-</section>
-<section data-auto-animate>
-  <div data-id="box" style="height: 150px; width: 150px; border-radius: 100px; background: blue;"></div>
-</section>
-
-<!-- Slide 2: Material 3 Component Example -->
-<section 
-  data-transition="zoom"
-  data-background-opacity=".8"
-  data-background-image={pplsGuideImg.src /* <- use optimizedBackground.src on server, to display locally use pplsGuideImg.src */}>
-
-  <h3>Mobile UI with Background Img</h3>
-
-  <!-- This container activates the Beer CSS styles -->
-  <MobileUI>
-    <header class="primary">
-      <nav>
-        <button class="circle transparent">
-          <i>menu</i>
+      <main class='responsive'>
+        <button class='chip'>
+          <i>home</i>
+          <span>Lorem</span>
         </button>
-        <h5 class="max">My App</h5>
-      </nav>
-    </header>
+        <button class='chip'>
+          <i>home</i>
+          <span>Ipsum</span>
+        </button>
+        <button class='chip square'>
+          <i>home</i>
+          <span>Dolor</span>
+        </button>
 
-    <main class="responsive">
-      <button class="chip">
-        <i>home</i>
-        <span>Lorem</span>
-      </button>
-      <button class="chip">
-        <i>home</i>
-        <span>Ipsum</span>
-      </button>
-      <button class="chip square">
-        <i>home</i>
-        <span>Dolor</span>
-      </button>
+        <div class='space'></div>
+        <article class='medium-elevate'>
+          <div>
+            <p class='small-text'>
+              We can show a mock of the People's App UI with M3 elements (Figma
+              Material 3 Design Kit Friendly)
+            </p>
+          </div>
+        </article>
 
-      <div class="space"></div>
-      <article class="medium-elevate">
-        <div>
-          <p class="small-text">We can show a mock of the People's App UI with M3 elements (Figma Material 3 Design Kit Friendly)</p>
+        <article class='medium-elevate'>
+          <button class='circle'>
+            <i>home</i>
+            <div class='badge'>10</div>
+          </button>
+
+          <a class='chip circle'>
+            <i>home</i>
+            <div class='badge'>10</div>
+          </a>
+          <progress class='circle' value='25' max='100'></progress>
+        </article>
+
+        <ul class='list'>
+          <li>
+            <button class='circle'>A</button>
+            <div class='max'>
+              <h6 class='small' style='color: var(--primary)'>Headline</h6>
+              <p class='medium-text'>Supporting text</p>
+            </div>
+            <label>+15 min</label>
+          </li>
+        </ul>
+
+        <div class='slider medium'>
+          <input type='range' />
+          <span>
+            <i>sunny</i>
+          </span>
         </div>
-      </article>
 
-      <article class="medium-elevate">
-        <button class="circle">
-          <i>home</i>
-          <div class="badge">10</div>
-        </button>
+        <div class='space'></div>
+        <article>
+          <nav>
+            <label class='radio'>
+              <input type='radio' />
+              <span>Item 1</span>
+            </label>
+            <label class='radio'>
+              <input type='radio' />
+              <span>Item 2</span>
+            </label>
+            <label class='radio'>
+              <input type='radio' />
+              <span>Item 3</span>
+            </label>
+          </nav>
+          <nav>
+            <div class='max'>
+              <h6>Title</h6>
+            </div>
+            <label class='switch'>
+              <input type='checkbox' />
+              <span></span>
+            </label>
+          </nav>
+        </article>
 
-        <a class="chip circle">
-          <i>home</i>
-          <div class="badge">10</div>
-        </a>
-        <progress class="circle" value="25" max="100"></progress>
+        <div class='space'></div>
+      </main>
 
+      <nav class='bottom'>
+        <button><i>home</i><span>Home</span></button>
+        <button><i>search</i><span>Search</span></button>
+      </nav>
+    </MobileUI>
+  </section>
 
-      </article>
-
-      <ul class="list">
-        <li>
-          <button class="circle">A</button>
-          <div class="max">
-            <h6 class="small" style="color: var(--primary)">Headline</h6>
-            <p class="medium-text">Supporting text</p>
-          </div>
-          <label>+15 min</label>
-        </li>
-      </ul>
-
-      <div class="slider medium">
-        <input type="range">
-        <span>
-          <i>sunny</i>
-        </span>
-      </div>
-
-      <div class="space"></div>
-      <article>
-        <nav>
-          <label class="radio">
-            <input type="radio">
-            <span>Item 1</span>
-          </label>
-          <label class="radio">
-            <input type="radio">
-            <span>Item 2</span>
-          </label>
-          <label class="radio">
-            <input type="radio">
-            <span>Item 3</span>
-          </label>
-        </nav>
-        <nav>
-          <div class="max">
-            <h6>Title</h6>
-          </div>
-          <label class="switch">
-            <input type="checkbox">
-            <span></span>
-          </label>
-        </nav>
-      </article>
-
-      <div class="space"></div>
-    </main>
-
-    <nav class="bottom">
-      <button><i>home</i><span>Home</span></button>
-      <button><i>search</i><span>Search</span></button>
-    </nav>
-  </MobileUI>
-</section>
-
-
-<!-- Slide 3: Code Highlight Example -->
-<section>
-<h3>Stepped Text Walkthrough</h3>
-<pre><code data-trim class="language-markdown" data-line-numbers="1-2|3-5|8-10|12-14|16">
+  <!-- Slide 3: Code Highlight Example -->
+  <section>
+    <h3>Stepped Text Walkthrough</h3>
+    <pre><code data-trim class="language-markdown" data-line-numbers="1-2|3-5|8-10|12-14|16">
 ---
 id: "calfresh-how-to"
 title: "How Do I Get CalFresh?"
@@ -317,7 +308,7 @@ You can apply for CalFresh in person, by phone, or online.
 
 > **Pro-Tip:** State workers suggest having your ID and Rent Receipt ready before you call to cut through the red tape.
 </code></pre>
-</section>
+  </section>
 </SlideLayout>
 
 <style>
