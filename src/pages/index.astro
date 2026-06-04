@@ -28,16 +28,25 @@ const getAsset = (slideDir: string, fileName: string) => {
 ---
 
 <SlideLayout>
+<section
+  data-background-opacity="0"
+  data-background-image={getAsset('slide-00', 'bg_x2.webp').src}
+>
+  <h1>Welcome!</h1>
+</section>
   <!-- Title Slide -->
-  <section>
+<section 
+  data-background-opacity=".1"
+  data-background-image={getAsset('slide-00', 'bg_x2.webp').src}
+>
     <div class='grid no-space'>
       <FigmaSlideCell
         preloadBackground={true}
         gridClass='s12 m12'
-        bgImg={getAsset('slide-01', 'bg.webp')}
+        bgImg={getAsset('slide-00', 'bg_x2.webp')}
         objects={[
           {
-            img: getAsset('slide-01', 'caption.webp'),
+            img: getAsset('slide-00', 'caption.webp'),
             x: 75,
             y: 477,
             width: 308,
@@ -46,7 +55,7 @@ const getAsset = (slideDir: string, fileName: string) => {
             autoplay: true,
           },
           {
-            img: getAsset('slide-01', 'subhead.webp'),
+            img: getAsset('slide-00', 'subhead.webp'),
             x: 75,
             y: 563,
             width: 384,
@@ -55,7 +64,7 @@ const getAsset = (slideDir: string, fileName: string) => {
             autoplay: true,
           },
           {
-            img: getAsset('slide-01', 'hero-obj-01.webp'),
+            img: getAsset('slide-00', 'hero-obj-01.webp'),
             x: 567,
             y: 156,
             width: 630,
