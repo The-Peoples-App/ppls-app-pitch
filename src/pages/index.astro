@@ -809,6 +809,85 @@ const getAsset = (slideDir: string, fileName: string) => {
     </div>
   </section>
 
+  <!-- The Roadmap Slide 12 -->
+  <section
+    data-background-opacity='.1'
+    data-background-image={getAsset('slide-12', 'bg_2x.webp').src}
+  >
+    <div class='grid no-space'>
+      <FigmaSlideCell
+        preloadBackground={true}
+        gridClass='s12 m12'
+        bgImg={getAsset('slide-12', 'bg_2x.webp')}
+        objects={[
+          {
+            img: getAsset('slide-12', 'title.webp'),
+            x: 98,
+            y: 81,
+            width: 540,
+            dataId: 'title',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-12', 'timeline-bg.webp'),
+            x: 0,
+            y: 285,
+            width: 1920,
+            dataId: 'timeline-bg',
+            animation: 'fade-up',
+            autoplay: true,
+            css: 'max-width: 100%',
+          },
+          {
+            img: getAsset('slide-12', 'milestone-01.webp'),
+            x: 150,
+            y: 629,
+            width: 336,
+            dataId: 'milestone-01',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-12', 'milestone-02.webp'),
+            x: 392,
+            y: 327,
+            width: 336,
+            dataId: 'milestone-02',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-12', 'milestone-03.webp'),
+            x: 787,
+            y: 629,
+            width: 377,
+            dataId: 'milestone-03',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-12', 'milestone-04.webp'),
+            x: 1249,
+            y: 327,
+            width: 399,
+            dataId: 'milestone-04',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-12', 'milestone-05.webp'),
+            x: 1429,
+            y: 629,
+            width: 336,
+            dataId: 'milestone-05',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+        ]}
+      />
+    </div>
+  </section>
   <!-- Slide Desc -->
   <section
     data-background-size='cover'
