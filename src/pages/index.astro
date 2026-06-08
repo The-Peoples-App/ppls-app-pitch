@@ -1030,6 +1030,86 @@ const getAsset = (slideDir: string, fileName: string) => {
     </div>
   </section>
 
+  <!-- Final Ask Slide 15 -->
+  <section
+    data-background-opacity='.1'
+    data-background-image={getAsset('slide-15', 'bg_2x.webp').src}
+  >
+    <div class='grid no-space'>
+      <FigmaSlideCell
+        preloadBackground={true}
+        gridClass='s12 m12'
+        bgImg={getAsset('slide-15', 'bg_2x.webp')}
+        objects={[
+          {
+            img: getAsset('slide-15', 'title.webp'),
+            x: 753,
+            y: 66,
+            width: 1121,
+            dataId: 'title',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-15', 'cta.webp'),
+            x: 714,
+            y: 370,
+            width: 1205,
+            dataId: 'cta',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-15', 'slide-point-01.webp'),
+            x: 799,
+            y: 584,
+            width: 347,
+            dataId: 'point-01',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-15', 'slide-point-02.webp'),
+            x: 1146,
+            y: 584,
+            width: 397,
+            dataId: 'point-02',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-15', 'slide-point-03.webp'),
+            x: 1543,
+            y: 584,
+            width: 290,
+            dataId: 'point-03',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-15', 'ui-01-dash-tablet.webp'),
+            x: 0,
+            y: 0,
+            width: 889,
+            dataId: 'ui-01-dash-tablet',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-15', 'body.webp'),
+            x: 789,
+            y: 835,
+            width: 1045,
+            dataId: 'body',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+        ]}
+      />
+    </div>
+  </section>
+
+
   <!-- Slide Desc -->
   <section
     data-background-size='cover'
