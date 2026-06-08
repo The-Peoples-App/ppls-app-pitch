@@ -658,6 +658,87 @@ const getAsset = (slideDir: string, fileName: string) => {
     </div>
   </section>
 
+  <!-- Silver Interactive Guide Slide 10 -->
+  <section
+    data-background-opacity='.1'
+    data-background-image={getAsset('slide-10', 'bg_2x.webp').src}
+  >
+    <div class='grid no-space'>
+      <FigmaSlideCell
+        preloadBackground={true}
+        gridClass='s12 m12'
+        bgImg={getAsset('slide-10', 'bg_2x.webp')}
+        objects={[
+          {
+            img: getAsset('slide-10', 'title.webp'),
+            x: 1065,
+            y: 111,
+            width: 698,
+            dataId: 'title',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-10', 'ui-01-ebt-clist.webp'),
+            x: 0,
+            y: 0,
+            width: 678,
+            dataId: 'ui-01-ebt-clist',
+            animation: 'fade-up',
+            autoplay: true,
+            css: 'z-index: 2'
+          },
+          {
+            img: getAsset('slide-10', 'ui-02-housing-clist.webp'),
+            x: 413,
+            y: 0,
+            width: 667,
+            dataId: 'ui-02-housing-clist',
+            animation: 'fade-right',
+            autoplay: true,
+            css: 'z-index: 1'
+          },
+          {
+            img: getAsset('slide-10', 'slide-point-01.webp'),
+            x: 1104,
+            y: 457,
+            width: 720,
+            dataId: 'point-01',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-10', 'slide-point-02.webp'),
+            x: 1104,
+            y: 547,
+            width: 720,
+            dataId: 'point-02',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-10', 'slide-point-03.webp'),
+            x: 1104,
+            y: 637,
+            width: 720,
+            dataId: 'point-03',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-10', 'slide-point-04.webp'),
+            x: 1104,
+            y: 730,
+            width: 720,
+            dataId: 'point-04',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+        ]}
+      />
+    </div>
+  </section>
+
   <!-- Slide Desc -->
   <section
     data-background-size='cover'
