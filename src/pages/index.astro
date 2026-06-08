@@ -28,17 +28,19 @@ const getAsset = (slideDir: string, fileName: string) => {
 ---
 
 <SlideLayout>
-<section
-  data-background-opacity="0"
-  data-background-image={getAsset('slide-00', 'bg_2x.webp').src}
->
-  <h1>Welcome!</h1>
-</section>
+  <!-- Welcome Slide -->
+  <section
+    data-background-opacity='0'
+    data-background-image={getAsset('slide-00', 'bg_2x.webp').src}
+  >
+    <h1>Welcome!</h1>
+  </section>
+
   <!-- Title Slide 00 -->
-<section 
-  data-background-opacity=".1"
-  data-background-image={getAsset('slide-00', 'bg_2x.webp').src}
->
+  <section
+    data-background-opacity='.1'
+    data-background-image={getAsset('slide-00', 'bg_2x.webp').src}
+  >
     <div class='grid no-space'>
       <FigmaSlideCell
         preloadBackground={true}
@@ -77,11 +79,11 @@ const getAsset = (slideDir: string, fileName: string) => {
     </div>
   </section>
 
-<!-- TOC Slide 01 -->
-<section 
-  data-background-opacity=".1"
-  data-background-image={getAsset('slide-01', 'bg_2x.webp').src}
->
+  <!-- TOC Slide 01 -->
+  <section
+    data-background-opacity='.1'
+    data-background-image={getAsset('slide-01', 'bg_2x.webp').src}
+  >
     <div class='grid no-space'>
       <FigmaSlideCell
         preloadBackground={true}
@@ -156,11 +158,11 @@ const getAsset = (slideDir: string, fileName: string) => {
     </div>
   </section>
 
-<!-- Legacy Guide Slide 02 -->
-<section 
-  data-background-opacity=".1"
-  data-background-image={getAsset('slide-02', 'bg_2x.webp').src}
->
+  <!-- Legacy Guide Slide 02 -->
+  <section
+    data-background-opacity='.1'
+    data-background-image={getAsset('slide-02', 'bg_2x.webp').src}
+  >
     <div class='grid no-space'>
       <FigmaSlideCell
         preloadBackground={true}
@@ -208,11 +210,11 @@ const getAsset = (slideDir: string, fileName: string) => {
     </div>
   </section>
 
-<!-- HR1 Slide 03 -->
-<section 
-  data-background-opacity=".1"
-  data-background-image={getAsset('slide-03', 'bg_2x.webp').src}
->
+  <!-- HR1 Slide 03 -->
+  <section
+    data-background-opacity='.1'
+    data-background-image={getAsset('slide-03', 'bg_2x.webp').src}
+  >
     <div class='grid no-space'>
       <FigmaSlideCell
         preloadBackground={true}
@@ -287,11 +289,11 @@ const getAsset = (slideDir: string, fileName: string) => {
     </div>
   </section>
 
-<!-- PDF Ceiling Slide 04 -->
-<section 
-  data-background-opacity=".1"
-  data-background-image={getAsset('slide-04', 'bg_2x.webp').src}
->
+  <!-- PDF Ceiling Slide 04 -->
+  <section
+    data-background-opacity='.1'
+    data-background-image={getAsset('slide-04', 'bg_2x.webp').src}
+  >
     <div class='grid no-space'>
       <FigmaSlideCell
         preloadBackground={true}
@@ -346,12 +348,13 @@ const getAsset = (slideDir: string, fileName: string) => {
         ]}
       />
     </div>
+  </section>
 
-<!-- Access A Slide 05 -->
-<section 
-  data-background-opacity=".1"
-  data-background-image={getAsset('slide-05', 'bg_2x.webp').src}
->
+  <!-- Access A Slide 05 -->
+  <section
+    data-background-opacity='.1'
+    data-background-image={getAsset('slide-05', 'bg_2x.webp').src}
+  >
     <div class='grid no-space'>
       <FigmaSlideCell
         preloadBackground={true}
@@ -406,8 +409,8 @@ const getAsset = (slideDir: string, fileName: string) => {
         ]}
       />
     </div>
-
   </section>
+
   <!-- Slide Desc -->
   <section
     data-background-size='cover'
