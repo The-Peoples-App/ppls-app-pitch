@@ -287,6 +287,67 @@ const getAsset = (slideDir: string, fileName: string) => {
     </div>
   </section>
 
+<!-- PDF Ceiling Slide 04 -->
+<section 
+  data-background-opacity=".1"
+  data-background-image={getAsset('slide-04', 'bg_2x.webp').src}
+>
+    <div class='grid no-space'>
+      <FigmaSlideCell
+        preloadBackground={true}
+        gridClass='s12 m12'
+        bgImg={getAsset('slide-04', 'bg_2x.webp')}
+        objects={[
+          {
+            img: getAsset('slide-04', 'title.webp'),
+            x: 154,
+            y: 190,
+            width: 595,
+            dataId: 'title',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-04', 'caption.webp'),
+            x: 154,
+            y: 460,
+            width: 159,
+            dataId: 'caption',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-04', 'slide-point-01.webp'),
+            x: 154,
+            y: 512,
+            width: 746,
+            dataId: 'point-01',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-04', 'slide-point-02.webp'),
+            x: 154,
+            y: 646,
+            width: 746,
+            dataId: 'point-02',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-03', 'slide-point-03.webp'),
+            x: 154,
+            y: 781,
+            width: 746,
+            dataId: 'point-03',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+        ]}
+      />
+    </div>
+
+  </section>
   <!-- Slide Desc -->
   <section
     data-background-size='cover'
