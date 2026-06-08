@@ -4,7 +4,7 @@ import "reveal.js/reveal.css";
 import "reveal.js/theme/black.css";
 import "highlight.js/styles/arta.css";
 // import "beercss/dist/cdn/beer.scoped.min.css"; // Scoped breaks old browsers
-import "beercss/dist/cdn/beer.min.css"; 
+// import "beercss/dist/cdn/beer.min.css"; 
 ---
 
 <html lang="en" style="background-color: #000">
@@ -14,9 +14,10 @@ import "beercss/dist/cdn/beer.min.css";
     <title>{title}</title>
     <slot name="head" />
     <style>
-    @layer reveal, beer;
+    /* @layer reveal, beer; */
+    @layer reveal;
     /* @import url("beercss/dist/cdn/beer.scoped.min.css") layer(beer); */
-    @import url("beercss/dist/cdn/beer.min.css") layer(beer);
+    /* @import url("beercss/dist/cdn/beer.min.css") layer(beer); */
     @import url("reveal.js/reveal.css") layer(reveal);
     @import url("reveal.js/theme/black.css") layer(reveal);
 
@@ -80,11 +81,11 @@ import "beercss/dist/cdn/beer.min.css";
     });
 
     // import "beercss/scoped"; // Breaks old browser
-    import "material-dynamic-colors";
-    import { ui } from "beercss/dist/cdn/beer.min.js";
-    let mode = ui("mode", "light");
-    let theme = await ui("theme", "#00ff00");
-    console.log('theme: ', theme, 'mode: ', mode);
+    // import "material-dynamic-colors";
+    // import { ui } from "beercss/dist/cdn/beer.min.js";
+    // let mode = ui("mode", "light");
+    // let theme = await ui("theme", "#00ff00");
+    // console.log('theme: ', theme, 'mode: ', mode);
     Reveal.on('make-it-pop', () => {
       console.log('✨');
     });
