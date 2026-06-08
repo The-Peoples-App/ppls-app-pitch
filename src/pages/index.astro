@@ -454,6 +454,76 @@ const getAsset = (slideDir: string, fileName: string) => {
     </div>
   </section>
 
+  <!-- Language Slide 07 -->
+  <section
+    data-background-opacity='.1'
+    data-background-image={getAsset('slide-07', 'bg_2x.webp').src}
+  >
+    <div class='grid no-space'>
+      <FigmaSlideCell
+        preloadBackground={true}
+        gridClass='s12 m12'
+        bgImg={getAsset('slide-07', 'bg_2x.webp')}
+        objects={[
+          {
+            img: getAsset('slide-07', 'title.webp'),
+            x: 0,
+            y: 124,
+            width: 1213,
+            dataId: 'title',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-07', 'slide-point-01.webp'),
+            x: 123,
+            y: 467,
+            width: 1058,
+            dataId: 'point-01',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-07', 'slide-point-02.webp'),
+            x: 123,
+            y: 602,
+            width: 1058,
+            dataId: 'point-02',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-07', 'slide-point-03.webp'),
+            x: 123,
+            y: 737,
+            width: 1058,
+            dataId: 'point-03',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-07', 'slide-point-04.webp'),
+            x: 123,
+            y: 872,
+            width: 1058,
+            dataId: 'point-04',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-07', 'ui-01-dropdown.webp'),
+            x: 1363,
+            y: 113,
+            width: 448,
+            dataId: 'ui-01-dropdown',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+        ]}
+      />
+    </div>
+  </section>
+
   <!-- Slide Desc -->
   <section
     data-background-size='cover'
