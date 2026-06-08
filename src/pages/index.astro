@@ -524,6 +524,70 @@ const getAsset = (slideDir: string, fileName: string) => {
     </div>
   </section>
 
+  <!-- Tiered Strategy Slide 08 -->
+  <section
+    data-background-opacity='.1'
+    data-background-image={getAsset('slide-08', 'bg_2x.webp').src}
+  >
+    <div class='grid no-space'>
+      <FigmaSlideCell
+        preloadBackground={true}
+        gridClass='s12 m12'
+        bgImg={getAsset('slide-08', 'bg_2x.webp')}
+        objects={[
+          {
+            img: getAsset('slide-08', 'title.webp'),
+            x: 40,
+            y: 60,
+            width: 785,
+            dataId: 'title',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-08', 'body.webp'),
+            x: 883,
+            y: 127,
+            width: 936,
+            dataId: 'body',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-08', 'bronze-tier.webp'),
+            x: 0,
+            y: 125,
+            width: 1821,
+            dataId: 'bronze-tier',
+            animation: 'fade-up',
+            autoplay: true,
+            css: 'z-index: 3',
+          },
+          {
+            img: getAsset('slide-08', 'silver-tier.webp'),
+            x: 0,
+            y: 351,
+            width: 1821,
+            dataId: 'silver-tier',
+            animation: 'fade-up',
+            autoplay: true,
+            css: 'z-index: 2',
+          },
+          {
+            img: getAsset('slide-08', 'gold-tier.webp'),
+            x: 0,
+            y: 579,
+            width: 1821,
+            dataId: 'gold-tier',
+            animation: 'fade-up',
+            autoplay: true,
+            css: 'z-index: 1',
+          },
+        ]}
+      />
+    </div>
+  </section>
+
   <!-- Slide Desc -->
   <section
     data-background-size='cover'
