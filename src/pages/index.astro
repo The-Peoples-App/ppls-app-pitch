@@ -411,6 +411,49 @@ const getAsset = (slideDir: string, fileName: string) => {
     </div>
   </section>
 
+  <!-- Access B Slide 06 -->
+  <section
+    data-background-opacity='.1'
+    data-background-image={getAsset('slide-06', 'bg_2x.webp').src}
+  >
+    <div class='grid no-space'>
+      <FigmaSlideCell
+        preloadBackground={true}
+        gridClass='s12 m12'
+        bgImg={getAsset('slide-06', 'bg_2x.webp')}
+        objects={[
+          {
+            img: getAsset('slide-06', 'ui-01of03-staged.webp'),
+            x: 72,
+            y: 0,
+            width: 607,
+            dataId: 'ui-01of03',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-06', 'ui-02of03-staged.webp'),
+            x: 350,
+            y: 0,
+            width: 941,
+            dataId: 'ui-02of03',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-06', 'ui-03of03-staged.webp'),
+            x: 1131,
+            y: 0,
+            width: 768,
+            dataId: 'ui-03of03',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+        ]}
+      />
+    </div>
+  </section>
+
   <!-- Slide Desc -->
   <section
     data-background-size='cover'
