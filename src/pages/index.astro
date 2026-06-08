@@ -1,13 +1,6 @@
 ---
 import SlideLayout from '../layouts/SlideLayout.astro';
-import MobileUI from '../components/MobileUI.astro';
 import FigmaSlideCell from '../components/figmaSlideCell.astro';
-import { Image, getImage } from 'astro:assets';
-
-import pplsGuideImg from '../assets/images/peoples_guide_page.webp';
-
-// This generates a guaranteed URL that works on remote servers
-const optimizedBackground = await getImage({ src: pplsGuideImg });
 
 // Grab every image inside the slides folder eagerly
 const allImages = import.meta.glob(
@@ -690,7 +683,7 @@ const getAsset = (slideDir: string, fileName: string) => {
             dataId: 'ui-01-ebt-clist',
             animation: 'fade-up',
             autoplay: true,
-            css: 'z-index: 2; max-height: 100%'
+            css: 'z-index: 2; max-height: 100%',
           },
           {
             img: getAsset('slide-10', 'ui-02-housing-clist.webp'),
@@ -700,7 +693,7 @@ const getAsset = (slideDir: string, fileName: string) => {
             dataId: 'ui-02-housing-clist',
             animation: 'fade-right',
             autoplay: true,
-            css: 'z-index: 1; max-height: 100%'
+            css: 'z-index: 1; max-height: 100%',
           },
           {
             img: getAsset('slide-10', 'slide-point-01.webp'),
@@ -1113,249 +1106,6 @@ const getAsset = (slideDir: string, fileName: string) => {
       />
     </div>
   </section>
-
-
-  <!-- Slide Desc -->
-  <section
-    data-background-size='cover'
-    data-background-opacity='.1'
-    data-background-image={optimizedBackground.src}
-  >
-    <Image src={getAsset('slide-01', 'datatable.png')} alt='Data Table' />
-  </section>
-
-  <!-- Slide Desc -->
-  <section
-    data-background-size='cover'
-    data-background-opacity='.1'
-    data-background-image={optimizedBackground.src}
-  >
-    <Image src={getAsset('slide-02', 'datatable.png')} alt='Data Table' />
-  </section>
-
-  <!-- Slide Desc -->
-  <section
-    data-background-size='cover'
-    data-background-opacity='.1'
-    data-background-image={optimizedBackground.src}
-  >
-    <Image src={getAsset('slide-03', 'datatable.png')} alt='Data Table' />
-  </section>
-
-  <!-- Slide Desc -->
-  <section
-    data-background-size='cover'
-    data-background-opacity='.1'
-    data-background-image={optimizedBackground.src}
-  >
-    <Image src={getAsset('slide-04', 'datatable.png')} alt='Data Table' />
-  </section>
-
-  <!-- Slide Desc -->
-  <section
-    data-background-size='cover'
-    data-background-opacity='.1'
-    data-background-image={optimizedBackground.src}
-  >
-    <Image src={getAsset('slide-05', 'datatable.png')} alt='Data Table' />
-  </section>
-
-  <!-- Slide Desc -->
-  <section
-    data-background-size='cover'
-    data-background-opacity='.1'
-    data-background-image={optimizedBackground.src}
-  >
-    <Image src={getAsset('slide-06', 'datatable.png')} alt='Data Table' />
-  </section>
-
-  <!-- Slide Desc -->
-  <section
-    data-background-size='cover'
-    data-background-opacity='.1'
-    data-background-image={optimizedBackground.src}
-  >
-    <Image src={getAsset('slide-07', 'datatable.png')} alt='Data Table' />
-  </section>
-
-  <!-- Slide Desc -->
-  <section
-    data-background-size='cover'
-    data-background-opacity='.1'
-    data-background-image={optimizedBackground.src}
-  >
-    <Image src={getAsset('slide-08', 'datatable.png')} alt='Data Table' />
-  </section>
-
-  <!-- Slide Desc -->
-  <section
-    data-background-size='cover'
-    data-background-opacity='.1'
-    data-background-image={optimizedBackground.src}
-  >
-    <Image src={getAsset('slide-09', 'datatable.png')} alt='Data Table' />
-  </section>
-
-  <!-- Slide Desc -->
-  <section
-    data-background-size='cover'
-    data-background-opacity='.1'
-    data-background-image={optimizedBackground.src}
-  >
-    <Image src={getAsset('slide-10', 'datatable.png')} alt='Data Table' />
-  </section>
-
-  <!-- Slide Desc -->
-  <section
-    data-background-size='cover'
-    data-background-opacity='.1'
-    data-background-image={optimizedBackground.src}
-  >
-    <Image src={getAsset('slide-11', 'datatable.png')} alt='Data Table' />
-  </section>
-
-  <!-- Slide Desc -->
-  <section
-    data-background-size='cover'
-    data-background-opacity='.1'
-    data-background-image={optimizedBackground.src}
-  >
-    <Image src={getAsset('slide-12', 'datatable.png')} alt='Data Table' />
-  </section>
-
-  <!-- Slide 2: Material 3 Component Example -->
-  <section
-    data-transition='zoom'
-    data-background-opacity='.8'
-    data-background-image={optimizedBackground.src}
-  >
-    <h3>Mobile UI with Background Img</h3>
-
-    <!-- This container activates the Beer CSS styles -->
-    <MobileUI>
-      <header class='primary'>
-        <nav>
-          <button class='circle transparent'>
-            <i>menu</i>
-          </button>
-          <h5 class='max'>My App</h5>
-        </nav>
-      </header>
-
-      <main class='responsive'>
-        <button class='chip'>
-          <i>home</i>
-          <span>Lorem</span>
-        </button>
-        <button class='chip'>
-          <i>home</i>
-          <span>Ipsum</span>
-        </button>
-        <button class='chip square'>
-          <i>home</i>
-          <span>Dolor</span>
-        </button>
-
-        <div class='space'></div>
-        <article class='medium-elevate'>
-          <div>
-            <p class='small-text'>
-              We can show a mock of the People's App UI with M3 elements (Figma
-              Material 3 Design Kit Friendly)
-            </p>
-          </div>
-        </article>
-
-        <article class='medium-elevate'>
-          <button class='circle'>
-            <i>home</i>
-            <div class='badge'>10</div>
-          </button>
-
-          <a class='chip circle'>
-            <i>home</i>
-            <div class='badge'>10</div>
-          </a>
-          <progress class='circle' value='25' max='100'></progress>
-        </article>
-
-        <ul class='list'>
-          <li>
-            <button class='circle'>A</button>
-            <div class='max'>
-              <h6 class='small' style='color: var(--primary)'>Headline</h6>
-              <p class='medium-text'>Supporting text</p>
-            </div>
-            <label>+15 min</label>
-          </li>
-        </ul>
-
-        <div class='slider medium'>
-          <input type='range' />
-          <span>
-            <i>sunny</i>
-          </span>
-        </div>
-
-        <div class='space'></div>
-        <article>
-          <nav>
-            <label class='radio'>
-              <input type='radio' />
-              <span>Item 1</span>
-            </label>
-            <label class='radio'>
-              <input type='radio' />
-              <span>Item 2</span>
-            </label>
-            <label class='radio'>
-              <input type='radio' />
-              <span>Item 3</span>
-            </label>
-          </nav>
-          <nav>
-            <div class='max'>
-              <h6>Title</h6>
-            </div>
-            <label class='switch'>
-              <input type='checkbox' />
-              <span></span>
-            </label>
-          </nav>
-        </article>
-
-        <div class='space'></div>
-      </main>
-
-      <nav class='bottom'>
-        <button><i>home</i><span>Home</span></button>
-        <button><i>search</i><span>Search</span></button>
-      </nav>
-    </MobileUI>
-  </section>
-
-  <!-- Slide 3: Code Highlight Example -->
-  <section>
-    <h3>Stepped Text Walkthrough</h3>
-    <pre><code data-trim class="language-markdown" data-line-numbers="1-2|3-5|8-10|12-14|16">
----
-id: "calfresh-how-to"
-title: "How Do I Get CalFresh?"
-page: 37
-section: "CalFresh"
----
-
-# How Do I Get CalFresh?
-
-You can apply for CalFresh in person, by phone, or online. 
-
-### Quick Steps:
-1. **Call DPSS:** (866) 613-3777
-2. **Apply Online:** [BenefitsCal.com](https://benefitscal.com)
-
-> **Pro-Tip:** State workers suggest having your ID and Rent Receipt ready before you call to cut through the red tape.
-</code></pre>
-  </section>
 </SlideLayout>
 
 <style>
@@ -1366,3 +1116,4 @@ You can apply for CalFresh in person, by phone, or online.
     filter: blur(14px);
   }
 </style>
+
