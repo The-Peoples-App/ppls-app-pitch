@@ -156,6 +156,58 @@ const getAsset = (slideDir: string, fileName: string) => {
     </div>
   </section>
 
+<!-- TOC Slide 02 -->
+<section 
+  data-background-opacity=".1"
+  data-background-image={getAsset('slide-02', 'bg_2x.webp').src}
+>
+    <div class='grid no-space'>
+      <FigmaSlideCell
+        preloadBackground={true}
+        gridClass='s12 m12'
+        bgImg={getAsset('slide-02', 'bg_2x.webp')}
+        objects={[
+          {
+            img: getAsset('slide-02', 'title.webp'),
+            x: 57,
+            y: 61,
+            width: 912,
+            dataId: 'guide',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-02', 'slide-point-01.webp'),
+            x: 1263,
+            y: 459,
+            width: 617,
+            dataId: 'point-01',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-02', 'slide-point-02.webp'),
+            x: 1263,
+            y: 656,
+            width: 617,
+            dataId: 'point-02',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-02', 'retro-guide.webp'),
+            x: 620,
+            y: 286,
+            width: 620,
+            dataId: 'guide',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+        ]}
+      />
+    </div>
+  </section>
+
   <!-- Slide Desc -->
   <section
     data-background-size='cover'
