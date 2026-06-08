@@ -20,14 +20,6 @@ import "highlight.js/styles/arta.css";
     /* @import url("beercss/dist/cdn/beer.min.css") layer(beer); */
     @import url("reveal.js/reveal.css") layer(reveal);
     @import url("reveal.js/theme/black.css") layer(reveal);
-
-    .make-it-pop {
-      filter: drop-shadow(0 0 10px purple);
-    }
-    .make-it-fade {
-      opacity: .1;
-      transition: opacity 2s ease-in-out;
-    }
     </style>
   </head>
 
@@ -86,9 +78,6 @@ import "highlight.js/styles/arta.css";
     // let mode = ui("mode", "light");
     // let theme = await ui("theme", "#00ff00");
     // console.log('theme: ', theme, 'mode: ', mode);
-    Reveal.on('make-it-pop', () => {
-      console.log('✨');
-    });
 
     </script>
   </body>
