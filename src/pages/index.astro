@@ -156,7 +156,7 @@ const getAsset = (slideDir: string, fileName: string) => {
     </div>
   </section>
 
-<!-- TOC Slide 02 -->
+<!-- Legacy Guide Slide 02 -->
 <section 
   data-background-opacity=".1"
   data-background-image={getAsset('slide-02', 'bg_2x.webp').src}
@@ -201,6 +201,85 @@ const getAsset = (slideDir: string, fileName: string) => {
             width: 620,
             dataId: 'guide',
             animation: 'fade-right',
+            autoplay: true,
+          },
+        ]}
+      />
+    </div>
+  </section>
+
+<!-- HR1 Slide 03 -->
+<section 
+  data-background-opacity=".1"
+  data-background-image={getAsset('slide-03', 'bg_2x.webp').src}
+>
+    <div class='grid no-space'>
+      <FigmaSlideCell
+        preloadBackground={true}
+        gridClass='s12 m12'
+        bgImg={getAsset('slide-03', 'bg_2x.webp')}
+        objects={[
+          {
+            img: getAsset('slide-03', 'title.webp'),
+            x: 515,
+            y: 138,
+            width: 891,
+            dataId: 'title',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-03', 'body.webp'),
+            x: 142,
+            y: 513,
+            width: 528,
+            dataId: 'body',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-03', 'caption.webp'),
+            x: 727,
+            y: 457,
+            width: 206,
+            dataId: 'caption',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-03', 'slide-point-01.webp'),
+            x: 727,
+            y: 513,
+            width: 1000,
+            dataId: 'point-01',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-03', 'slide-point-02.webp'),
+            x: 727,
+            y: 603,
+            width: 1000,
+            dataId: 'point-02',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-03', 'slide-point-03.webp'),
+            x: 727,
+            y: 693,
+            width: 1000,
+            dataId: 'point-03',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-03', 'slide-point-04.webp'),
+            x: 727,
+            y: 828,
+            width: 1000,
+            dataId: 'point-04',
+            animation: 'fade-up',
             autoplay: true,
           },
         ]}
