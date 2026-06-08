@@ -347,6 +347,66 @@ const getAsset = (slideDir: string, fileName: string) => {
       />
     </div>
 
+<!-- Access A Slide 05 -->
+<section 
+  data-background-opacity=".1"
+  data-background-image={getAsset('slide-05', 'bg_2x.webp').src}
+>
+    <div class='grid no-space'>
+      <FigmaSlideCell
+        preloadBackground={true}
+        gridClass='s12 m12'
+        bgImg={getAsset('slide-05', 'bg_2x.webp')}
+        objects={[
+          {
+            img: getAsset('slide-05', 'title.webp'),
+            x: 98,
+            y: 190,
+            width: 635,
+            dataId: 'title',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-05', 'caption.webp'),
+            x: 98,
+            y: 460,
+            width: 188,
+            dataId: 'caption',
+            animation: 'fade-right',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-05', 'slide-point-01.webp'),
+            x: 99,
+            y: 512,
+            width: 634,
+            dataId: 'point-01',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-05', 'slide-point-02.webp'),
+            x: 99,
+            y: 647,
+            width: 634,
+            dataId: 'point-02',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+          {
+            img: getAsset('slide-05', 'slide-point-03.webp'),
+            x: 99,
+            y: 782,
+            width: 634,
+            dataId: 'point-03',
+            animation: 'fade-up',
+            autoplay: true,
+          },
+        ]}
+      />
+    </div>
+
   </section>
   <!-- Slide Desc -->
   <section
