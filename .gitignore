@@ -8,3 +8,6 @@ dist/
 
 # Zip files in assets
 src/assets/**/*.zip
+
+# Raw slide images
+src/assets/slides/slide-??/raw/*
