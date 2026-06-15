@@ -41,7 +41,8 @@ export const onRequest = defineMiddleware(async (context, next) => {
         sameSite: 'lax',
         domain: url.hostname,
       });
-      return redirect(isLocal ? url.href : 'https://deck.peoplesapp.org', 302);
+      // return redirect(isLocal ? url.href : 'https://deck.peoplesapp.org', 302);
+      return redirect(url.origin, 302);
     } else {
       return redirect(`${url.pathname}?error=1`, 302);
     }
