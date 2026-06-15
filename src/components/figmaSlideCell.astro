@@ -13,6 +13,7 @@ interface ObjectProps {
 
 interface Props {
   bgImg: any;
+  tileBgImg?: any;
   objects: ObjectProps[];
   gridClass?: string;
   preloadBackground?: boolean;
@@ -20,6 +21,7 @@ interface Props {
 
 const {
   bgImg,
+  tileBgImg,
   objects,
   gridClass = 's12 m12',
   preloadBackground = false,
@@ -37,6 +39,10 @@ const optimizedBg = await getImage({
 const bgImageSrc = optimizedBg.src;
 const bgImageSrcset = optimizedBg.srcSet.attribute;
 const bgImageSizes = '100vw';
+
+const tileBgSrc = tileBgImg ? tileBgImg.src : '';
+const tileBgStyles =
+  tileBgImg ? `background-size: auto; --tileBgImgSrc: url(${tileBgSrc})` : '';
 
 // Build <link rel="preload" ...> (preload 1st slide bg image)
 let preloadScript = '';
@@ -62,9 +68,9 @@ if (preloadBackground) {
 <Fragment set:html={preloadScript} />
 
 <div
-  class={`${gridClass} stage-cell`}
+  class={`${gridClass} ${tileBgImg ? 'stage-cell-tiled-bg' : 'stage-cell'}`}
   data-id='stable-figma-stage'
-  style={`background-image: url(${bgImageSrc});`}
+  style={`background-image: url(${tileBgImg ? 'none' : bgImageSrc}); ${tileBgImg ? tileBgStyles : ''}`}
 >
   {
     objects.map((obj, index) => {
@@ -112,6 +118,44 @@ if (preloadBackground) {
     overflow: hidden;
     contain: layout size style;
     margin-block-start: 0px !important; /* Overrides aggressive Beer CSS spacing */
+  }
+
+  /* STAGE CELL IF TILED BG */
+  .stage-cell-tiled-bg {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden; /* Hides the extra background outside the box */
+    background-color: #241e4e; /* Dark background fallback */
+    z-index: -3; /* Sits below LAYER 1 & LAYER 2 of bg */
+  }
+
+  /* LAYER 1: The rotated purple ellipse gradient (Bottom Layer) */
+  .stage-cell-tiled-bg::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    width: 120%;
+    height: 200%;
+
+    background-image: radial-gradient(ellipse 75% 38%, #352c72, #241e4e);
+    transform: rotate(19deg);
+    z-index: -2; /* Sits at the bottom */
+  }
+
+  /* LAYER 2: The cube-tile image at 16% visibility (Middle Layer) */
+  .stage-cell-tiled-bg:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--tileBgImgSrc);
+    opacity: 0.16;
+    z-index: -1; /* Sits on top of gradient */
+    pointer-events: none; /* Prevent layer from blocking mouse clicks */
   }
 
   .floating-object {
