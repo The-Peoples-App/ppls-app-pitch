@@ -14,7 +14,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     // ONLY redirect if we are on the root of the ASTRO site and 
     // user not already at destiniation (prevents redirect loops)
     if (!isLocal && url.pathname === '/' && !url.hostname.includes('deck')) {
-      return redirect('https://deck.peoplesapp.org', 302);
+      return redirect(`${url.origin}/`, 302);
     }
     return next();
   }
