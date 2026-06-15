@@ -26,6 +26,13 @@ export const onRequest = defineMiddleware(async (context, next) => {
     const correctPassword =
       process.env.SITE_PASSWORD || import.meta.env.SITE_PASSWORD;
 
+    // DIAGNOSTIC LOGS:
+    console.log('====== AUTH DIAGNOSTICS ======');
+    console.log('User typed password:', password);
+    console.log('Server expected password:', correctPassword);
+    console.log('Password match status:', password === correctPassword);
+    console.log('=================================');
+
     if (password === correctPassword) {
       // Set cookie and redirect
       cookies.set('site_auth', 'authenticated', {
