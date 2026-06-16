@@ -7,14 +7,24 @@ export const onRequest = defineMiddleware(async (context, next) => {
     url.hostname === 'localhost' ||
     url.hostname === '127.0.0.1' ||
     url.hostname.startsWith('192.168.');
+  const correctPassword =
+    process.env.SITE_PASSWORD || import.meta.env.SITE_PASSWORD;
+
   const authError = url.searchParams.has('error');
 
   // 1. Redirect already-authenticated users
   if (cookies.get('site_auth')?.value === 'authenticated') {
-    // ONLY redirect if we are on the root of the ASTRO site and 
-    // user not already at destiniation (prevents redirect loops)
-    if (!isLocal && url.pathname === '/' && !url.hostname.includes('deck')) {
-      return redirect('https://deck.peoplesapp.org', 302);
+    // If they hit the root bare URL, we just want them to proceed into the app.
+    // Netlify Deploy Previews do not use a "deck." subdomain, so we bypass the domain check if it's a Netlify URL.
+    const isNetlifyPreview = url.hostname.includes('netlify.app');
+
+    if (
+      !isLocal &&
+      url.pathname === '/' &&
+      !url.hostname.includes('deck') &&
+      !isNetlifyPreview
+    ) {
+      return redirect(`${url.origin}/`, 302);
     }
     return next();
   }
@@ -23,8 +33,13 @@ export const onRequest = defineMiddleware(async (context, next) => {
   if (request.method === 'POST') {
     const data = await request.formData();
     const password = data.get('password');
-    const correctPassword =
-      process.env.SITE_PASSWORD || import.meta.env.SITE_PASSWORD;
+
+    // DIAGNOSTIC LOGS:
+    console.log('====== AUTH DIAGNOSTICS ======');
+    console.log('User typed password:', password);
+    console.log('Server expected password:', correctPassword);
+    console.log('Password match status:', password === correctPassword);
+    console.log('=================================');
 
     if (password === correctPassword) {
       // Set cookie and redirect
@@ -34,7 +49,8 @@ export const onRequest = defineMiddleware(async (context, next) => {
         sameSite: 'lax',
         domain: url.hostname,
       });
-      return redirect(isLocal ? url.href : 'https://deck.peoplesapp.org', 302);
+      // return redirect(isLocal ? url.href : 'https://deck.peoplesapp.org', 302);
+      return redirect(url.origin, 302);
     } else {
       return redirect(`${url.pathname}?error=1`, 302);
     }
