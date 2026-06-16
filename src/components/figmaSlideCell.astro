@@ -95,13 +95,13 @@ if (preloadBackground) {
             { 'fragment': !isAutoplay, 'autoplay-animation': isAutoplay },
           ]}
           style={`
-      left: ${obj.x}px;
-      top: ${obj.y}px;
-      width: ${obj.width}px;
-      height: auto;
-      --delay: ${index * 0.15}s;
-      ${customCSS || ''}
-    `}
+                  left: ${obj.x}px;
+                  top: ${obj.y}px;
+                  width: ${obj.width}px;
+                  height: auto;
+                  --delay: ${index * 0.15}s;
+                  ${customCSS || ''}
+               `}
         />
       );
     })
