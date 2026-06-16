@@ -33,39 +33,27 @@ import { Image, getImage } from 'astro:assets';
 const optimizedBg = await getImage({
   src: bgImg,
   width: 1920,
-  widths: [1024, 2048, 4096], // Build 1x, 2x, 4x versions
+  format: 'webp',
 });
 
 const bgImageSrc = optimizedBg.src;
-const bgImageSrcset = optimizedBg.srcSet.attribute;
-const bgImageSizes = '100vw';
-
 const tileBgSrc = tileBgImg ? tileBgImg.src : '';
 const tileBgStyles =
   tileBgImg ? `background-size: auto; --tileBgImgSrc: url(${tileBgSrc})` : '';
-
-// Build <link rel="preload" ...> (preload 1st slide bg image)
-let preloadScript = '';
-if (preloadBackground) {
-  preloadScript = `
-    <script>
-      (function() {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'image';
-        link.href = '${bgImageSrc}';
-        link.setAttribute('imagesrcset', '${bgImageSrcset}');
-        link.setAttribute('imagesizes', '${bgImageSizes}');
-        link.setAttribute('fetchpriority', 'high');
-        document.head.appendChild(link);
-      })();
-    </script>
-  `;
-}
 ---
 
-<!-- Add <link rel="preload"...> to <head> -->
-<Fragment set:html={preloadScript} />
+<script define:vars={{ bgImageSrc, preloadBackground }} is:inline>
+  (function () {
+    if (!preloadBackground) return;
+    // Build <link rel="preload" ...> (preload 1st slide bg image)
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = bgImageSrc;
+    link.setAttribute('fetchpriority', 'high');
+    document.head.appendChild(link);
+  })();
+</script>
 
 <div
   class={`${gridClass} ${tileBgImg ? 'stage-cell-tiled-bg' : 'stage-cell'}`}
