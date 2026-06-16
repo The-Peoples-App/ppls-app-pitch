@@ -5,7 +5,7 @@ interface ObjectProps {
   y: number; // Figma Y
   width: number;
   dataId: string; // Required for smooth Auto-Animate
-  animation?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right'; // Restrict types for predictable CSS
+  animation?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right';
   autoplay?: boolean;
   fetchPriority?: boolean;
   css?: string;
@@ -74,7 +74,7 @@ if (preloadBackground) {
 >
   {
     objects.map((obj, index) => {
-      // Determine the animation class based on whether it is autoplaying or manual
+      // Determine animation class based on autoplaying or manual
       const animationClass = obj.animation || null;
       const isAutoplay = obj.autoplay ?? false;
       const customCSS = obj.css || null;
@@ -166,7 +166,7 @@ if (preloadBackground) {
     transform: translate3d(0, 0, 0);
   }
 
-  /* --- Manual Reveal.js Fragments --- */
+  /* Manual Reveal.js Fragments */
   .fragment {
     transition-delay: var(--delay);
   }
@@ -192,7 +192,7 @@ if (preloadBackground) {
     transform: translateX(-40px);
   }
 
-  /* 2. Active state (Triggers immediately when Reveal.js adds .present to the parent slide) */
+  /* 2. Active state (Animate on Reveal .present on parent) */
   :global(.present) .autoplay-animation {
     opacity: 1;
     transform: translate(0, 0);
