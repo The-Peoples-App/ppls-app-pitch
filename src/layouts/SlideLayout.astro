@@ -35,13 +35,12 @@ import "reveal.js/theme/black.css";
     import Reveal from "reveal.js";
     import RevealNotes from 'reveal.js/plugin/notes';
 
-    import RevealHighlight from 'reveal.js/plugin/highlight';
     // Init reveal.js
     const deck = new Reveal();
 
     // ********* REVEALJS CONFIG *********
     deck.initialize({
-      plugins: [RevealNotes, RevealHighlight],
+      plugins: [RevealNotes],
       showNotes: false,
       hash: true, // Add slide # to URL (default false)
       disableLayout: false, // Roll your own layout (default false)
