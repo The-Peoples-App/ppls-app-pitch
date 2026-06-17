@@ -5,7 +5,7 @@ interface ObjectProps {
   y: number; // Figma Y
   width: number;
   dataId: string; // Required for smooth Auto-Animate
-  animation?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right'; // Restrict types for predictable CSS
+  animation?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right';
   autoplay?: boolean;
   fetchPriority?: boolean;
   css?: string;
@@ -33,39 +33,27 @@ import { Image, getImage } from 'astro:assets';
 const optimizedBg = await getImage({
   src: bgImg,
   width: 1920,
-  widths: [1024, 2048, 4096], // Build 1x, 2x, 4x versions
+  format: 'webp',
 });
 
 const bgImageSrc = optimizedBg.src;
-const bgImageSrcset = optimizedBg.srcSet.attribute;
-const bgImageSizes = '100vw';
-
 const tileBgSrc = tileBgImg ? tileBgImg.src : '';
 const tileBgStyles =
   tileBgImg ? `background-size: auto; --tileBgImgSrc: url(${tileBgSrc})` : '';
-
-// Build <link rel="preload" ...> (preload 1st slide bg image)
-let preloadScript = '';
-if (preloadBackground) {
-  preloadScript = `
-    <script>
-      (function() {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'image';
-        link.href = '${bgImageSrc}';
-        link.setAttribute('imagesrcset', '${bgImageSrcset}');
-        link.setAttribute('imagesizes', '${bgImageSizes}');
-        link.setAttribute('fetchpriority', 'high');
-        document.head.appendChild(link);
-      })();
-    </script>
-  `;
-}
 ---
 
-<!-- Add <link rel="preload"...> to <head> -->
-<Fragment set:html={preloadScript} />
+<script define:vars={{ bgImageSrc, preloadBackground }} is:inline>
+  (function () {
+    if (!preloadBackground) return;
+    // Build <link rel="preload" ...> (preload 1st slide bg image)
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = bgImageSrc;
+    link.setAttribute('fetchpriority', 'high');
+    document.head.appendChild(link);
+  })();
+</script>
 
 <div
   class={`${gridClass} ${tileBgImg ? 'stage-cell-tiled-bg' : 'stage-cell'}`}
@@ -74,7 +62,7 @@ if (preloadBackground) {
 >
   {
     objects.map((obj, index) => {
-      // Determine the animation class based on whether it is autoplaying or manual
+      // Determine animation class based on autoplaying or manual
       const animationClass = obj.animation || null;
       const isAutoplay = obj.autoplay ?? false;
       const customCSS = obj.css || null;
@@ -95,13 +83,13 @@ if (preloadBackground) {
             { 'fragment': !isAutoplay, 'autoplay-animation': isAutoplay },
           ]}
           style={`
-      left: ${obj.x}px;
-      top: ${obj.y}px;
-      width: ${obj.width}px;
-      height: auto;
-      --delay: ${index * 0.15}s;
-      ${customCSS || ''}
-    `}
+                  left: ${obj.x}px;
+                  top: ${obj.y}px;
+                  width: ${obj.width}px;
+                  height: auto;
+                  --delay: ${index * 0.15}s;
+                  ${customCSS || ''}
+               `}
         />
       );
     })
@@ -166,7 +154,7 @@ if (preloadBackground) {
     transform: translate3d(0, 0, 0);
   }
 
-  /* --- Manual Reveal.js Fragments --- */
+  /* Manual Reveal.js Fragments */
   .fragment {
     transition-delay: var(--delay);
   }
@@ -192,7 +180,7 @@ if (preloadBackground) {
     transform: translateX(-40px);
   }
 
-  /* 2. Active state (Triggers immediately when Reveal.js adds .present to the parent slide) */
+  /* 2. Active state (Animate on Reveal .present on parent) */
   :global(.present) .autoplay-animation {
     opacity: 1;
     transform: translate(0, 0);
