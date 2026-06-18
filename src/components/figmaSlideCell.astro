@@ -80,6 +80,7 @@ if (preloadBackground) {
           src={obj.img}
           width={obj.width}
           widths={[obj.width, obj.width * 2]}
+          sizes={`${obj.width}px`}
           alt='Slide Object'
           data-id={obj.dataId}
           loading={preloadBackground ? 'eager' : 'lazy'}
