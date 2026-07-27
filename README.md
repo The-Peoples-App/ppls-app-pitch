@@ -37,3 +37,9 @@ View the Figma Prototype for the People's App Slide Deck.
 
 [Figma Prototype](https://www.figma.com/proto/BORhdeEh8PEqDIcu1CGhhr/Peoples-App?node-id=0-1&t=b7E3SNxUkewdYs1j-1)
 
+## People's App ADRs
+Architectural Decision Records (Recommendations) for Designing/Developing the People's App.
+
+Link to Main People's App repo `ppls-app` (ADRs):
+[https://github.com/The-Peoples-App/ppls-app/tree/main/docs/architecture](https://github.com/The-Peoples-App/ppls-app/tree/main/docs/architecture)
+
