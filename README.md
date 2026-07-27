@@ -43,3 +43,4 @@ Architectural Decision Records (Recommendations) for Designing/Developing the Pe
 Link to Main People's App repo `ppls-app` (ADRs):
 [https://github.com/The-Peoples-App/ppls-app/tree/main/docs/architecture](https://github.com/The-Peoples-App/ppls-app/tree/main/docs/architecture)
 
+[deck.peoplesapp.org](https://deck.peoplesapp.org)
